@@ -1,0 +1,12 @@
+# Ne pas versionner les logs npm
+npm-debug.log*
+
+# Ne pas versionner node_modules s’il y en a (Cordova)
+node_modules/
+
+# macOS
+.DS_Store
+
+# Fichiers temporaires d’éditeurs
+*.swp
+*~

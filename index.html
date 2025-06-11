@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Suivi des heures – Mayra</title>
+
+    <!-- FullCalendar v5 CSS -->
+    <link href="main.min.css" rel="stylesheet" />
+    <!-- Vos styles (styles.css) -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#007bff" />
+  </head>
+  <body>
+    <!-- Calendrier -->
+    <div id="calendar"></div>
+
+    <!-- Modal de saisie -->
+    <div id="dayModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2 id="modalDateLabel">Date</h2>
+        <form id="dayForm">
+          <label>Heure d’entrée&nbsp;: <input type="time" id="timeIn" /></label><br/>
+          <label>Heure de sortie&nbsp;: <input type="time" id="timeOut" /></label>
+          <fieldset style="margin-top:10px;">
+            <legend>Si pas d’heures, cochez :</legend>
+            <label><input type="radio" name="leaveType" id="leaveConge" value="conge" /> Congé</label>
+            <label><input type="radio" name="leaveType" id="leaveArret" value="arret" /> Arrêt Maladie</label>
+          </fieldset>
+
+          <!-- Tâches -->
+          <div class="checkbox-group" style="margin-top:10px;">
+            <label><input type="checkbox" id="chkPAB" /> PAB</label>
+            <label><input type="checkbox" id="chkLoi90" /> Loi 90</label>
+            <label><input type="checkbox" id="chkOrientation" /> Orientation</label>
+            <label><input type="checkbox" id="chkFormation" /> Formation</label>
+          </div>
+
+          <label style="display:block; margin-top:10px;">
+            Notes&nbsp;:
+            <textarea id="notes" rows="3" style="width:100%;"></textarea>
+          </label>
+          <div class="button-group">
+            <button type="submit">Enregistrer</button>
+            <button type="button" id="deleteBtn">Supprimer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Totaux hebdomadaires -->
+    <div id="weeklyTotals">
+      <h3>Totaux par semaine</h3>
+      <ul id="weekList"></ul>
+    </div>
+
+    <!-- FullCalendar v5 JS -->
+    <script src="main.min.js"></script>
+    <!-- Votre logique -->
+    <script src="script.js"></script>
+    <!-- Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('sw.js')
+          .then(reg => console.log('SW enregistré :', reg.scope))
+          .catch(err => console.error('SW erreur :', err));
+      }
+    </script>
+  </body>
+</html>
