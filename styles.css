@@ -78,8 +78,8 @@ body {
   padding-left: 0;
 }
 
-/* Texte “Mes heures de travail” en simple texte (pas de cadre) */
-.fc-toolbar .fc-button[data-purpose="myLabel"] {
+/* Texte “Mes heures de travail” comme simple titre à gauche */
+.fc-toolbar .fc-myLabel-button {
   background: none !important;
   border: none !important;
   box-shadow: none !important;
